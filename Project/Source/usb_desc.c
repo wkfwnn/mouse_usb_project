@@ -52,7 +52,7 @@ const uint8_t Speaker_ConfigDescriptor[] =
     /* Configuration 1 */
     0x09,                                 /* bLength */
     USB_CONFIGURATION_DESCRIPTOR_TYPE,    /* bDescriptorType */
-    0x6D,                                 /* wTotalLength  110 bytes*/
+    0x6D,                                 /* wTotalLength  109 bytes*/
     0x00,
     0x02,                                 /* bNumInterfaces */
     0x01,                                 /* bConfigurationValue */
@@ -129,7 +129,7 @@ const uint8_t Speaker_ConfigDescriptor[] =
 
     /* USB Speaker Standard AS Interface Descriptor - Audio Streaming Zero Bandwith */
     /* Interface 1, Alternate Setting 0                                             */
-    SPEAKER_SIZ_INTERFACE_DESC_SIZE,  /* bLength */
+    SPEAKER_SIZ_INTERFACE_DESC_SIZE,       /* bLength */
     USB_INTERFACE_DESCRIPTOR_TYPE,        /* bDescriptorType */
     0x01,                                 /* bInterfaceNumber */
     0x00,                                 /* bAlternateSetting */

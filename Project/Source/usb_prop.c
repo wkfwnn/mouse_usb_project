@@ -178,6 +178,15 @@ void Speaker_SetConfiguration(void)
         bDeviceState = CONFIGURED;
     }
 }
+
+
+
+void Speaker_GetConfiguration(void)
+{
+		
+
+
+}
 /*******************************************************************************
 * Function Name  : Speaker_SetConfiguration.
 * Description    : Update the device state to addressed.

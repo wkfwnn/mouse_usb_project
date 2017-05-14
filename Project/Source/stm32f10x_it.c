@@ -30,6 +30,7 @@
 uint16_t Out_Data_Offset;
 extern uint16_t In_Data_Offset;
 extern uint8_t Stream_Buff[];
+extern volatile uint8_t current_stream;
 extern uint32_t MUTE_DATA;
 extern u8 Flag_Uart_Send;
 
@@ -211,16 +212,16 @@ void TIM4_IRQHandler(void)
 
 void DMA1_Channel4_IRQHandler(void)  
 {  
-    //清除标志位  
+	
+	//清除标志位  
     DMA_ClearFlag(DMA1_FLAG_TC4);  
     //DMA_ClearITPendingBit(DMA1_FLAG_TC4);  
     //DMA1->IFCR |= DMA1_FLAG_TC4;  
     //关闭DMA  
     DMA_Cmd(DMA1_Channel4,DISABLE);  
     //DMA1_Channel4->CCR &= ~(1<<0);  
-  
-    //允许再次发送  
-    Flag_Uart_Send = 0;  
+	//允许再次发送 
+    PB15 = 0;
 }  
 
 /******************************************************************************/

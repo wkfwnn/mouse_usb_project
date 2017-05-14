@@ -25,6 +25,7 @@
 void Speaker_init(void);
 void Speaker_Reset(void);
 void Speaker_SetConfiguration(void);
+void Speaker_GetConfiguration(void);
 void Speaker_SetDeviceAddress (void);
 void Speaker_Status_In (void);
 void Speaker_Status_Out (void);
@@ -37,7 +38,7 @@ uint8_t *Speaker_GetStringDescriptor(uint16_t);
 uint8_t *Mute_Command(uint16_t Length);
 
 /* Exported define -----------------------------------------------------------*/
-#define Speaker_GetConfiguration          NOP_Process
+//#define Speaker_GetConfiguration          NOP_Process
 //#define Speaker_SetConfiguration          NOP_Process
 #define Speaker_GetInterface              NOP_Process
 #define Speaker_SetInterface              NOP_Process

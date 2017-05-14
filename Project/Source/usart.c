@@ -140,9 +140,9 @@ void USART1_IRQHandler(void)
 		if(Res == 0x0a){
 			if(USART1_RX_STA == 1){
 				i = 0;
-			  uart_driver.uart1_call_back(USART1_RX_BUF,usart1_len);
+			    uart_driver.uart1_call_back(USART1_RX_BUF,usart1_len);
 				USART1_RX_STA = 0;
-			  usart1_len = 0;
+			    usart1_len = 0;
 			}
 			  
 		}

@@ -60,6 +60,7 @@ static void Data_Setup0(void);
 *******************************************************************************/
 uint8_t *Standard_GetConfiguration(uint16_t Length)
 {
+  printf("Standard_GetConfiguration %d\n",Length);
   if (Length == 0)
   {
     pInformation->Ctrl_Info.Usb_wLength =
@@ -86,6 +87,7 @@ RESULT Standard_SetConfiguration(void)
       Device_Table.Total_Configuration) && (pInformation->USBwValue1 == 0)
       && (pInformation->USBwIndex == 0)) /*call Back usb spec 2.0*/
   {
+  	printf("%d,%d,%d\n",pInformation->USBwValue0,pInformation->USBwValue1,pInformation->USBwIndex);
     pInformation->Current_Configuration = pInformation->USBwValue0;
     pUser_Standard_Requests->User_SetConfiguration();
     return USB_SUCCESS;

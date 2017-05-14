@@ -84,7 +84,7 @@ void USB_Istr(void)
 #if (IMR_MSK & ISTR_RESET)
     if (wIstr & ISTR_RESET & wInterrupt_Mask)
     {
-				//printf("USB_RESET\n");
+		printf("USB_RESET\n");
         _SetISTR((uint16_t)CLR_RESET);
         Device_Property.Reset();
 #ifdef RESET_CALLBACK

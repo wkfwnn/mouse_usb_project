@@ -27,6 +27,8 @@
 #include "stm32_usart.h"
 #include "stm32_dma.h"
 #include "usart.h"
+#include "uart_cmd_process.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -111,29 +113,18 @@ int main(void)
 	uint8_t data[128];
 	u8 aa[10];
 	uint32_t i=0,ret=0;
-	
     Set_System();
-	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	//设置NVIC中断分组2:2位抢占优先级，2位响应优先级
-	uart_init(256000 );
+	uart_init(115200);
 	DMA_Configuration();
 	Set_USBClock();
 	USB_Config();
 	USB_Init();
 	Speaker_Config();
-   // printf("helloworld\n");
-     while(1) {
-	 	if(Flag_Uart_Send != 1){
-		 	//DMA_SetCurrDataCounter(DMA1_Channel4, 48);
-		 	//DMA_Cmd(DMA1_Channel4,ENABLE);
-			Flag_Uart_Send = 1;
-	 	}
+	GPIO_Config();
+    while(1) {
+	 	uart_cmd_process();
         
-		if(USB_Received_Flag){
-			USB_Received_Flag = FALSE;
-			//printf("receive data\n");
-		}
-
      }
 }
 
