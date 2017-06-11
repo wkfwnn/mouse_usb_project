@@ -15,8 +15,10 @@
 ### List of Objects: adding '".\output\output\usart.o"'
 ### List of Objects: adding '".\output\output\sys.o"'
 ### List of Objects: adding '".\output\output\uart_service.o"'
-### List of Objects: adding '".\output\output\uart_cmd_resolve.o"'
 ### List of Objects: adding '".\output\output\uart_cmd_process.o"'
+### List of Objects: adding '".\output\output\uart_cmd_resolve.o"'
+### List of Objects: adding '".\output\output\wether_first_start.o"'
+### List of Objects: adding '".\output\output\system_reset.o"'
 ### List of Objects: adding '".\output\output\core_cm3.o"'
 ### List of Objects: adding '".\output\output\system_stm32f10x.o"'
 ### List of Objects: adding '".\output\output\usb_core.o"'
@@ -49,7 +51,7 @@
 ### List of Objects: adding '".\output\output\stm32f10x_usart.o"'
 ### List of Objects: adding '".\output\output\stm32f10x_wwdg.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 ".\output\output\startup_stm32f10x_md.o" ".\output\output\main.o" ".\output\output\stm32f10x_it.o" ".\output\output\usb_pwr.o" ".\output\output\usb_desc.o" ".\output\output\usb_endp.o" ".\output\output\usb_istr.o" ".\output\output\usb_prop.o" ".\output\output\hw_config.o" ".\output\output\stm32_dma.o" ".\output\output\delay.o" ".\output\output\usart.o" ".\output\output\sys.o" ".\output\output\uart_service.o" ".\output\output\uart_cmd_resolve.o" ".\output\output\uart_cmd_process.o" ".\output\output\core_cm3.o" ".\output\output\system_stm32f10x.o" ".\output\output\usb_core.o" ".\output\output\usb_init.o" ".\output\output\usb_int.o" ".\output\output\usb_mem.o" ".\output\output\usb_regs.o" ".\output\output\usb_sil.o" ".\output\output\misc.o" ".\output\output\stm32f10x_adc.o" ".\output\output\stm32f10x_bkp.o" ".\output\output\stm32f10x_can.o" ".\output\output\stm32f10x_cec.o" ".\output\output\stm32f10x_crc.o" ".\output\output\stm32f10x_dac.o" ".\output\output\stm32f10x_dbgmcu.o" ".\output\output\stm32f10x_dma.o" ".\output\output\stm32f10x_exti.o" ".\output\output\stm32f10x_flash.o" ".\output\output\stm32f10x_fsmc.o" ".\output\output\stm32f10x_gpio.o" ".\output\output\stm32f10x_i2c.o" ".\output\output\stm32f10x_iwdg.o" ".\output\output\stm32f10x_pwr.o" ".\output\output\stm32f10x_rcc.o" ".\output\output\stm32f10x_rtc.o" ".\output\output\stm32f10x_sdio.o" ".\output\output\stm32f10x_spi.o" ".\output\output\stm32f10x_tim.o" ".\output\output\stm32f10x_usart.o" ".\output\output\stm32f10x_wwdg.o" 
+--cpu Cortex-M3 ".\output\output\startup_stm32f10x_md.o" ".\output\output\main.o" ".\output\output\stm32f10x_it.o" ".\output\output\usb_pwr.o" ".\output\output\usb_desc.o" ".\output\output\usb_endp.o" ".\output\output\usb_istr.o" ".\output\output\usb_prop.o" ".\output\output\hw_config.o" ".\output\output\stm32_dma.o" ".\output\output\delay.o" ".\output\output\usart.o" ".\output\output\sys.o" ".\output\output\uart_service.o" ".\output\output\uart_cmd_process.o" ".\output\output\uart_cmd_resolve.o" ".\output\output\wether_first_start.o" ".\output\output\system_reset.o" ".\output\output\core_cm3.o" ".\output\output\system_stm32f10x.o" ".\output\output\usb_core.o" ".\output\output\usb_init.o" ".\output\output\usb_int.o" ".\output\output\usb_mem.o" ".\output\output\usb_regs.o" ".\output\output\usb_sil.o" ".\output\output\misc.o" ".\output\output\stm32f10x_adc.o" ".\output\output\stm32f10x_bkp.o" ".\output\output\stm32f10x_can.o" ".\output\output\stm32f10x_cec.o" ".\output\output\stm32f10x_crc.o" ".\output\output\stm32f10x_dac.o" ".\output\output\stm32f10x_dbgmcu.o" ".\output\output\stm32f10x_dma.o" ".\output\output\stm32f10x_exti.o" ".\output\output\stm32f10x_flash.o" ".\output\output\stm32f10x_fsmc.o" ".\output\output\stm32f10x_gpio.o" ".\output\output\stm32f10x_i2c.o" ".\output\output\stm32f10x_iwdg.o" ".\output\output\stm32f10x_pwr.o" ".\output\output\stm32f10x_rcc.o" ".\output\output\stm32f10x_rtc.o" ".\output\output\stm32f10x_sdio.o" ".\output\output\stm32f10x_spi.o" ".\output\output\stm32f10x_tim.o" ".\output\output\stm32f10x_usart.o" ".\output\output\stm32f10x_wwdg.o" 
 --strict --scatter ".\Output\Output\Send.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
@@ -57,7 +59,7 @@
 ### ADS-LD Output File: '.\Output\Output\Send.axf'
 ### ADS-LD Command File: '.\Output\Output\Send.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Output\Output\Send.lnp', Handle=0x00000BC0
+### Creating CmdFile '.\Output\Output\Send.lnp', Handle=0x00000EEC
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Output\Output\Send.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

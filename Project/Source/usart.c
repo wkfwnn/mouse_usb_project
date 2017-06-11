@@ -113,11 +113,15 @@ void uart_init(u32 bound){
 
 }
 
-
-
-
-
-
+void USART3_sendData(unsigned char * buff,int len)
+{
+	int i = 0;
+	for(i = 0;i < len;i++){
+		//USART3->SR;
+	    while(USART_GetFlagStatus(USART3,USART_FLAG_TC)== RESET); 
+		USART_SendData(USART3,(uint8_t)buff[i]);   
+	}
+}
 
 //串口1中断服务程序
 void USART1_IRQHandler(void)                	
@@ -152,15 +156,15 @@ void USART1_IRQHandler(void)
 
 void USART3_IRQHandler(void)
 {
-		u8 Res;
-  static u16 i = 0;
+	u8 Res;
+    static u16 i = 0;
 	if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
 	{
 		Res = USART_ReceiveData(USART3);
 		
 		if(i < USART_REC_LEN ){
 			USART3_RX_BUF[i++] = Res;
-		  usart3_len++; 
+		    usart3_len++; 
 		}
 		else{
 			i = 0;
@@ -173,7 +177,7 @@ void USART3_IRQHandler(void)
 				
 				uart_driver.uart3_call_back(USART3_RX_BUF,usart3_len);
 				USART3_RX_STA = 0;
-			  usart3_len = 0;
+			    usart3_len = 0;
 				i = 0;
 			}
 				
@@ -206,7 +210,7 @@ int fputc(int ch, FILE *f)
 	
 #if UART3_DEBUG
 	//USART3->SR;
-	while(USART_GetFlagStatus(USART3,USART_FLAG_TC)==RESET); 
+	while(USART_GetFlagStatus(USART3,USART_FLAG_TXE)==RESET); 
     USART_SendData(USART3,(uint8_t)ch);   
 	return ch;
 #else

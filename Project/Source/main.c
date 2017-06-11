@@ -24,10 +24,13 @@
 //#include "usb_lib.h"
 #include "usbio.h"
 
-#include "stm32_usart.h"
 #include "stm32_dma.h"
 #include "usart.h"
 #include "uart_cmd_process.h"
+#include "state.h"
+#include "wether_first_start.h"
+#include "system_reset.h"
+
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -43,7 +46,7 @@ extern uint8_t IT_Clock_Sent;
 extern u8 TimeCount;
 extern u32 mData_Len;
 
-#define	REPORT_COUNT							48//端点长度
+#define	REPORT_COUNT				48//端点长度
 #define ENDP2_TXADDR        (0x118)
 //uint8_t USB_Receive_Buffer[REPORT_COUNT];
 extern uint8_t Stream_Buff[48];
@@ -76,56 +79,31 @@ uint32_t USB_SendData(uint8_t *data,uint32_t dataNum)
 	#endif
 	return dataNum;  
 }
-/**
-  * @brief  接收从USB获取的数据
-  * @param  data 数据存储首地址
-  * @param  dataNum 准备读取的数据字节数
-  * @retval 读取的字节数
-  */
-uint32_t USB_GetData(uint8_t *data,uint32_t dataNum)
-{
-    uint32_t len=0;
-	if(dataNum>sizeof(Stream_Buff)){
-		dataNum = sizeof(Stream_Buff);
-	}
-	for(len=0;len<dataNum;len++){
-		*data=Stream_Buff[len];
-		data++;
-	}
-    return dataNum;
-}
 
 u8  Flag_Uart_Send = 0;
 
 
-
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
-/*******************************************************************************
-* Function Name  : main.
-* Description    : Main routine.
-* Input          : None.
-* Output         : None.
-* Return         : None.
-*******************************************************************************/
-int main(void)
+void bsp_init()
 {
-	uint8_t data[128];
-	u8 aa[10];
-	uint32_t i=0,ret=0;
+	uart_init(115200);
+	whether_first_start();
     Set_System();
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	//设置NVIC中断分组2:2位抢占优先级，2位响应优先级
-	uart_init(115200);
+	
 	DMA_Configuration();
 	Set_USBClock();
 	USB_Config();
 	USB_Init();
-	Speaker_Config();
+	//Speaker_Config();
 	GPIO_Config();
+
+}
+int main(void)
+{
+	bsp_init();
     while(1) {
 	 	uart_cmd_process();
-        
-     }
+    }
 }
 
 void USB_SendString(u8 *str)

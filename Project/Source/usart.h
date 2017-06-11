@@ -19,6 +19,7 @@ extern u8 usart3_len;
 
 //default debug port is uart1£¬change to 1,debug port change to uart3
 #define UART3_DEBUG     0
+
 typedef struct uart_port
 {
 	void (*uart1_call_back)(u8 *buff, u8 len);
@@ -30,6 +31,7 @@ typedef struct uart_port
 	@bound:baudrate,can be 9600bps,115200,and other common baudrate
 */
 void uart_init(u32 bound);
+void USART3_sendData(unsigned char * buff,int len);
 
 
 #endif

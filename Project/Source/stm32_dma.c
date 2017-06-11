@@ -18,8 +18,8 @@ void DMA_Configuration(void)
 	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;			// 外设地址递增允许控制
 	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;						// 内存地址递增允许控制
 	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;	// 外设数据宽度
-	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;				// 内存数据宽度
-	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;								// 数据传输模式
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;			 // 内存数据宽度
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;						     // 数据传输模式
 	DMA_InitStructure.DMA_Priority = DMA_Priority_High;						// 通道优先级
 	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;						 // 内存到内存模式使能
 

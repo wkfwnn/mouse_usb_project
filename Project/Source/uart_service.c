@@ -1,8 +1,8 @@
 #include "uart_service.h"
 #include "uart_cmd_resolve.h"
 
-#define USE_UART1_RESOLVE    1
-#define USE_UART3_RESOLVE    0
+#define USE_UART1_RESOLVE    0
+#define USE_UART3_RESOLVE    1
 
 void uart1_irq_service(u8 *buff ,u8 len)
 {

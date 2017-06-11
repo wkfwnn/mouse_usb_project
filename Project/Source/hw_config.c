@@ -45,7 +45,7 @@ static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
 void Set_System(void)
 {
     /* 时钟已经在启动文件中配置完成 */
-	GPIO_InitTypeDef  GPIO_InitStructure;
+	  GPIO_InitTypeDef  GPIO_InitStructure;
 
     /* Enable GPIOB, TIM4 & TIM2 clock */
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA , ENABLE);		

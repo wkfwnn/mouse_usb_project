@@ -466,6 +466,16 @@
               <FileType>1</FileType>
               <FilePath>.\Source\uart_service.c</FilePath>
             </File>
+            <File>
+              <FileName>uart_cmd_process.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\uart_cmd_process.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_cmd_resolve.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\uart_cmd_resolve.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
