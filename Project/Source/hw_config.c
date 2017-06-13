@@ -24,6 +24,7 @@
 
 #include "platform_config.h"
 #include "usb_pwr.h"
+#include "delay.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -36,6 +37,21 @@ ErrorStatus HSEStartUpStatus;
 static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
 /* Private functions ---------------------------------------------------------*/
 
+void usb_port_set(u8 enable)
+{  	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);	
+	if(enable){
+		_SetCNTR(_GetCNTR()&(~(1<<1)));//exit power down mode
+	}
+	else
+	{	  
+		_SetCNTR(_GetCNTR()|(1<<1));  // power down mode
+		GPIOA->CRH&=0XFFF00FFF;
+		GPIOA->CRH|=0X00033000;
+		PAout(12) = 0;    		  
+	}
+}  
+
 /*******************************************************************************
 * Function Name  : Set_System
 * Description    : Configures Main system clocks & power
@@ -45,12 +61,10 @@ static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
 void Set_System(void)
 {
     /* 时钟已经在启动文件中配置完成 */
-	  GPIO_InitTypeDef  GPIO_InitStructure;
+	 GPIO_InitTypeDef  GPIO_InitStructure;
 
     /* Enable GPIOB, TIM4 & TIM2 clock */
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA , ENABLE);		
-		//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB , ENABLE);	//sts new change
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4 | RCC_APB1Periph_TIM2 , ENABLE);
 
     /* Configure USB pull-up */
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIO_DISCONNECT, ENABLE);
@@ -62,6 +76,11 @@ void Set_System(void)
     GPIO_Init(USB_DISCONNECT, &GPIO_InitStructure);
 
     USB_Cable_Config(DISABLE);
+	//usb_port_set(DISABLE);
+
+	delay_ms(300);
+
+	//usb_port_set(ENABLE);
 
     USB_Cable_Config(ENABLE);
 }
@@ -251,8 +270,6 @@ void GPIO_Config(void)
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	PA8 = 0;
 	PB15 = 0;
-
-	
 }
 /*******************************************************************************
 * Function Name  : Get_SerialNum.

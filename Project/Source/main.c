@@ -30,7 +30,7 @@
 #include "state.h"
 #include "wether_first_start.h"
 #include "system_reset.h"
-
+#include "delay.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -86,6 +86,7 @@ u8  Flag_Uart_Send = 0;
 void bsp_init()
 {
 	uart_init(115200);
+	delay_init();
 	whether_first_start();
     Set_System();
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	//设置NVIC中断分组2:2位抢占优先级，2位响应优先级
@@ -94,7 +95,6 @@ void bsp_init()
 	Set_USBClock();
 	USB_Config();
 	USB_Init();
-	//Speaker_Config();
 	GPIO_Config();
 
 }

@@ -59,7 +59,7 @@
 ### ADS-LD Output File: '.\Output\Output\Send.axf'
 ### ADS-LD Command File: '.\Output\Output\Send.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Output\Output\Send.lnp', Handle=0x00000EEC
+### Creating CmdFile '.\Output\Output\Send.lnp', Handle=0x00000828
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Output\Output\Send.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

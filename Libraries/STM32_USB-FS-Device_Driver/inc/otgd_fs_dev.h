@@ -22,6 +22,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
 #include "usb_type.h"
+#include "wether_first_start.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -81,7 +82,7 @@
 #define _GetRxStallStatus(bEpNum)     (OTG_DEV_GetEPRxStatus(bEpNum) == EP_RX_STALL) 
 
 /* Define the callbacks for updating the USB state machine */
-#define OTGD_FS_DEVICE_RESET              Device_Property.Reset()
+#define OTGD_FS_DEVICE_RESET              Device_Property[CURRENT_USB_DEVICE_ENUM]->Reset()
 
 /* Exported define -----------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */

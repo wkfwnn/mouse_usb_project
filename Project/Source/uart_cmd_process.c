@@ -2,7 +2,7 @@
 #include "uart_cmd_resolve.h"
 #include "stdio.h"
 #include "usart.h"	 
-
+#include "system_reset.h"
 
 unsigned char file_name[] = "test_data.txt";
 unsigned char test_data[] = "helloworlddsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
@@ -21,9 +21,11 @@ void uart_cmd_process(void)
 	}else if(uart_cmd & AUDIO){
 		printf("process AUDIO\n");
 		uart_cmd &=~AUDIO;
+		system_reset(NUM_SPEAKER);
 	}else if(uart_cmd & KEYBOARD){
 		printf("process KEYBOARD\n");
 		uart_cmd &=~KEYBOARD;
+		system_reset(NUM_HID);
 	}else if(uart_cmd & EXEC){
 		printf(" process EXEC\n");
 		uart_cmd &=~EXEC;

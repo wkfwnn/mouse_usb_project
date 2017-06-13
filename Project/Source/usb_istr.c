@@ -18,6 +18,8 @@
 #include "usb_prop.h"
 #include "usb_pwr.h"
 #include "usb_istr.h"
+#include "wether_first_start.h"
+
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -86,7 +88,7 @@ void USB_Istr(void)
     {
 		printf("USB_RESET\n");
         _SetISTR((uint16_t)CLR_RESET);
-        Device_Property.Reset();
+        Device_Property[CURRENT_USB_DEVICE_ENUM]->Reset();
 #ifdef RESET_CALLBACK
         RESET_Callback();
 #endif

@@ -15,7 +15,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usb_lib.h"
-
+#include "wether_first_start.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -39,9 +39,11 @@ uint16_t  wInterrupt_Mask;
 DEVICE_INFO	Device_Info;
 USER_STANDARD_REQUESTS  *pUser_Standard_Requests;
 
-/* Extern variables ----------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+
+
+extern DEVICE_PROP *Device_Property[];
+extern USER_STANDARD_REQUESTS *User_Standard_Requests[];
+
 
 /*******************************************************************************
 * Function Name  : USB_Init
@@ -54,8 +56,8 @@ void USB_Init(void)
 {
   pInformation = &Device_Info;
   pInformation->ControlState = 2;
-  pProperty = &Device_Property;
-  pUser_Standard_Requests = &User_Standard_Requests;
+  pProperty = Device_Property[CURRENT_USB_DEVICE_ENUM];
+  pUser_Standard_Requests = User_Standard_Requests[CURRENT_USB_DEVICE_ENUM];
   /* Initialize devices one by one */
   pProperty->Init();
 }

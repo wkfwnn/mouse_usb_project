@@ -476,6 +476,16 @@
               <FileType>1</FileType>
               <FilePath>.\Source\uart_cmd_resolve.c</FilePath>
             </File>
+            <File>
+              <FileName>wether_first_start.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\wether_first_start.c</FilePath>
+            </File>
+            <File>
+              <FileName>system_reset.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\system_reset.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

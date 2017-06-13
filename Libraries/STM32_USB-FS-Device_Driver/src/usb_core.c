@@ -15,6 +15,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usb_lib.h"
+#include "wether_first_start.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define ValBit(VAR,Place)    (VAR & (1 << Place))
@@ -310,7 +312,7 @@ RESULT Standard_ClearFeature(void)
         if (Related_Endpoint == ENDP0)
         {
           /* After clear the STALL, enable the default endpoint receiver */
-          SetEPRxCount(Related_Endpoint, Device_Property.MaxPacketSize);
+          SetEPRxCount(Related_Endpoint, Device_Property[CURRENT_USB_DEVICE_ENUM]->MaxPacketSize);
           _SetEPRxStatus(Related_Endpoint, EP_RX_VALID);
         }
         else
@@ -969,7 +971,7 @@ uint8_t In0_Process(void)
 * Output         : None.
 * Return         : Post0_Process.
 *******************************************************************************/
-uint8_t Out0_Process(void)
+uint8_t  Out0_Process(void)
 {
   uint32_t ControlState = pInformation->ControlState;
 
@@ -1018,7 +1020,7 @@ uint8_t Post0_Process(void)
   USB_OTG_EP *ep;
 #endif /* STM32F10X_CL */
       
-  SetEPRxCount(ENDP0, Device_Property.MaxPacketSize);
+  SetEPRxCount(ENDP0, Device_Property[CURRENT_USB_DEVICE_ENUM]->MaxPacketSize);
 
   if (pInformation->ControlState == STALLED)
   {

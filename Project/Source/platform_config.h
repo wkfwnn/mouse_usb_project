@@ -27,7 +27,7 @@
 /* Define the STM32F10x hardware depending on the used evaluation board */
 
 #define USB_DISCONNECT                    GPIOA
-#define USB_DISCONNECT_PIN                GPIO_Pin_8
+#define USB_DISCONNECT_PIN                GPIO_Pin_12
 #define RCC_APB2Periph_GPIO_DISCONNECT    RCC_APB2Periph_GPIOA
 
 /* Exported macro ------------------------------------------------------------*/
